@@ -25,6 +25,26 @@ public class Move : MonoBehaviour
             _rb.velocity = Vector3.zero;
     }
 
+    //private void Movee()
+    //{
+    //    Vector3 tangage;
+    //    float tangag;
+
+    //    tangage = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+
+    //    if(tangage != moveVector)
+    //    {
+    //        if (tangage.x < 0.5f)
+    //            tangag = tangage.x * -1;
+    //        else
+    //            tangag = tangage.x;
+
+    //        _rb.velocity = new Vector3(tangag * 10f, 0f, 10f);
+    //    }
+    //    else
+    //        _rb.velocity = Vector3.forward * 10f;
+    //}
+
     private void Movee()
     {
         Vector3 tangage;
@@ -32,14 +52,14 @@ public class Move : MonoBehaviour
 
         tangage = Camera.main.ScreenToViewportPoint(Input.mousePosition);
 
-        if(tangage != moveVector)
+        if (tangage.x <= 0.4 || tangage.x >= 0.6)
         {
-            if (tangage.x < 0.5f)
-                tangag = tangage.x * -1;
-            else
-                tangag = tangage.x;
-
-            _rb.velocity = new Vector3(tangag * 10f, 0f, 10f);
+            tangag = tangage.x;
+            if(tangage.x < 0.5)
+            {
+                tangag = -(1 - tangage.x);
+            }
+            _rb.velocity = new Vector3(tangag, 0f, 1f) * 10f;
         }
         else
             _rb.velocity = Vector3.forward * 10f;
