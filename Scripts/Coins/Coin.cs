@@ -18,7 +18,7 @@ public sealed class Coin : Interactable
 
     private void RotateCoin()
     {
-        transform.RotateAround(transform.position, Vector3.up, 10 * Time.deltaTime);
+        transform.RotateAround(transform.position, Vector3.left, 30 * Time.deltaTime);
     }
 
     private void Update()

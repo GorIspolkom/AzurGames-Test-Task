@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class CoinsCounter : MonoBehaviour
 {
-    [SerializeField] private Text _coinsCountText;
+    [SerializeField] private TMP_Text _coinsCountText;
 
     public void OnNotify(double coinsCount) => Notify?.Invoke(coinsCount);
 

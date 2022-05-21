@@ -6,19 +6,21 @@ using Zenject;
 public abstract class Interactable : MonoBehaviour
 {
     [Inject] protected InteractableMediator interactableMediator;
-    [SerializeField] private ParticleSystem _particleSystem;
+    protected EffectsSpawner effectsSpawner;
     [SerializeField] public double interactableCoast;
 
-    public void Init(InteractableMediator interactableMediator)
+    public void Init(InteractableMediator interactableMediator, EffectsSpawner effectsSpawner)
     {
         this.interactableMediator = interactableMediator;
+        this.effectsSpawner = effectsSpawner;
     }
 
     public abstract void Interact();
+
     public virtual IEnumerator ShowEffects()
     {
         gameObject.SetActive(false);
-        _particleSystem.Play();
+        effectsSpawner.SpawnParticle(transform.position);
         yield return new WaitForSecondsRealtime(1f);
     }
 }
