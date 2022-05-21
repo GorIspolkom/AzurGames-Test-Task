@@ -1,21 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
 
-public class InteractableMediator : MonoBehaviour
+public sealed class InteractableMediator : MonoBehaviour
 {
-    [SerializeField] private UIHandler _uIHandler;
-    [SerializeField] private PlayerData _playerData;
+    [SerializeField] private Spawner _effectSpawner;
+    private UIHandler _uIHandler;
+    private PlayerData _playerData;
+
+    public void Init(PlayerData playerData, UIHandler uIHandler) 
+    { 
+        _playerData = playerData;
+        _uIHandler = uIHandler;
+    }
 
     public void Notify(Interactable interactable)
     {
         _playerData.AddCoins(interactable.interactableCoast);
         _uIHandler.CoinsCounter.OnNotify(_playerData.CoinsCount);
+        _effectSpawner.Spawn(interactable.gameObject.transform.position);
     }
-    private void Awake()
+    private void Start()
     {
-        _playerData = new PlayerData();
         _uIHandler.CoinsCounter.OnNotify(_playerData.CoinsCount);
     }
 }

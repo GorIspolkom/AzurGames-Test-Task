@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
 
-public class CoinsCounter : MonoBehaviour
+public sealed class CoinsCounter : MonoBehaviour
 {
     [SerializeField] private TMP_Text _coinsCountText;
 

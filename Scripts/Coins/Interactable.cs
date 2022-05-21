@@ -1,26 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
 
 public abstract class Interactable : MonoBehaviour
 {
-    [Inject] protected InteractableMediator interactableMediator;
-    protected EffectsSpawner effectsSpawner;
+    protected InteractableMediator interactableMediator;
     [SerializeField] public double interactableCoast;
 
-    public void Init(InteractableMediator interactableMediator, EffectsSpawner effectsSpawner)
+    public void Init(InteractableMediator interactableMediator)
     {
         this.interactableMediator = interactableMediator;
-        this.effectsSpawner = effectsSpawner;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag.Equals("Player"))
+            Interact();
     }
 
     public abstract void Interact();
-
-    public virtual IEnumerator ShowEffects()
-    {
-        gameObject.SetActive(false);
-        effectsSpawner.SpawnParticle(transform.position);
-        yield return new WaitForSecondsRealtime(1f);
-    }
 }

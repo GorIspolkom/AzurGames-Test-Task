@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-
-public class FinalPanel : InterfacePanel
+public sealed class FinalPanel : InterfacePanel
 {
+    private LoadLevel nextLevel;
+
+    public void InitPanel(LoadLevel loadLevel) { nextLevel = loadLevel; }
 
     public override void Open()
     {
@@ -13,6 +11,6 @@ public class FinalPanel : InterfacePanel
 
     public void OpenNextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        nextLevel();
     }
 }

@@ -101,6 +101,10 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 910354044416591431, guid: c8d805a5adb75f6409237354e9bb3f68, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 910354044416591433, guid: c8d805a5adb75f6409237354e9bb3f68, type: 3}
       propertyPath: m_Name
       value: CoinSystem

@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class FinishLine : MonoBehaviour
+public sealed class FinishLine : MonoBehaviour
 {
-    [SerializeField] UIHandler uIHandler;
+    [SerializeField] private UIHandler _uIHandler;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag.Equals("Player"))
         {
-            Debug.Log("FInish line");
-            uIHandler.FinalPanel.Open();
+            _uIHandler.FinalPanel.Open();
         }
     }
 }
