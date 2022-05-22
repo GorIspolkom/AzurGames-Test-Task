@@ -200,27 +200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb2efdcf15d79147939d6cc8b6a374b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movable: {fileID: 108565812}
---- !u!114 &108565812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 108565808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87b33e85a69e15f4981d134614fa23ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _velocity: 10
-  _xMin: 0.4
-  _xMax: 0.6
---- !u!4 &108565813 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4627909804491518, guid: d1d7f6d670a38f84d82180544cf7d7f0, type: 3}
-  m_PrefabInstance: {fileID: 1619325086}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &111763044
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,7 +1268,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483647
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1327,9 +1306,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34eda813b173c94b805f951ad849b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransfrom: {fileID: 108565813}
-  offest: {x: 0, y: -3, z: 6}
-  smoothVelocity: 20
+  _offest: {x: 0, y: -2, z: 4}
+  _smoothVelocity: 25
 --- !u!1 &1021104101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,7 +1740,7 @@ RectTransform:
   m_GameObject: {fileID: 1414762635}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 1775088965}
   m_Father: {fileID: 1176438549}
@@ -1823,6 +1801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9521d64c8461e8e4f884d918f21f5946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animationVelocity: 1
 --- !u!1001 &1619325086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3183,11 +3162,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2138204389}
-  - component: {fileID: 2138204388}
   - component: {fileID: 2138204390}
   - component: {fileID: 2138204391}
   - component: {fileID: 2138204392}
-  - component: {fileID: 2138204393}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -3195,28 +3172,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2138204388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2138204387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1187a4562d03e7143b043052b7b006da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spawnPoints:
-  - {fileID: 1635063103}
-  - {fileID: 2014840236}
-  - {fileID: 97517169}
-  - {fileID: 111763045}
-  - {fileID: 316585041}
-  - {fileID: 1021104102}
-  - {fileID: 418378219}
-  _interactable: {fileID: 106250875528239727, guid: e3858db3f1a2c99449fc51bc54f89ad9, type: 3}
-  _mediator: {fileID: 2138204391}
 --- !u!4 &2138204389
 Transform:
   m_ObjectHideFlags: 0
@@ -3257,7 +3212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16cc72cacdb7b5046b82df5cc14b1f3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effectSpawner: {fileID: 2138204393}
 --- !u!114 &2138204392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3272,19 +3226,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interactableMediator: {fileID: 2138204391}
   _uIHandler: {fileID: 2138204390}
---- !u!114 &2138204393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2138204387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cb015fc5c92d4b4fac777beb7e284df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _coinsEffect: {fileID: 1179827697084621876, guid: 7e9c23bb1d19adf4898735f04f9df9f4, type: 3}
+  _player: {fileID: 108565811}
+  _followCamera: {fileID: 963194229}
+  _spawnPositions:
+  - {fileID: 1635063103}
+  - {fileID: 2014840236}
+  - {fileID: 97517169}
+  - {fileID: 111763045}
+  - {fileID: 806185209}
+  - {fileID: 316585041}
+  - {fileID: 1021104102}
+  _interactable: {fileID: 106250875528239727, guid: e3858db3f1a2c99449fc51bc54f89ad9, type: 3}
 --- !u!1001 &7620025446666806266
 PrefabInstance:
   m_ObjectHideFlags: 0

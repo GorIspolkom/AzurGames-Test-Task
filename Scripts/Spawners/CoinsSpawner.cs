@@ -1,25 +1,27 @@
 using UnityEngine;
 
-public sealed class CoinsSpawner : Spawner
+public sealed class CoinsSpawner : ISpawner
 {
-    [SerializeField] private Transform[] _spawnPoints;
-    [SerializeField] private Interactable _interactable;
-    [SerializeField] private InteractableMediator _mediator;
+    private Transform[] _spawnPoints;
+    private Interactable _interactable;
+    private InteractableMediator _mediator;
 
-    private void Awake()
+    public CoinsSpawner(Transform[] spawnPositions, Interactable interactable, InteractableMediator mediator)
     {
-        SpawnInteractables();
+        _spawnPoints = spawnPositions;
+        _interactable = interactable;
+        _mediator = mediator;
     }
 
-    private void SpawnInteractables()
+    public void SpawnInteractables()
     {
         foreach (Transform point in _spawnPoints)
             Spawn(point.position);
     }
 
-    public override void Spawn(Vector3 spawnPosition)
+    public void Spawn(Vector3 spawnPosition)
     {
-        Interactable ine = Instantiate(_interactable, spawnPosition, Quaternion.identity, null);
+        Interactable ine = Object.Instantiate(_interactable, spawnPosition, Quaternion.identity, null);
         ine.Init(_mediator);
     }
 }

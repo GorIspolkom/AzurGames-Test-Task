@@ -2,7 +2,12 @@ using UnityEngine;
 
 public sealed class Player : MonoBehaviour
 {
-    [SerializeField] private Movable _movable;
+    private IMovable _movable;
+
+    public void Init(IMovable movable)
+    {
+        _movable = movable;
+    }
 
     private void FixedUpdate()
     {

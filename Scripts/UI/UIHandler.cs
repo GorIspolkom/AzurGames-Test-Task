@@ -5,9 +5,9 @@ public sealed class UIHandler : MonoBehaviour
     [SerializeField] private CoinsCounter _coinsCounter;
     [SerializeField] private FinalPanel _finalPanel;
 
-    public void Init(LoadLevel loadLevel)
+    public void Init(LevelManager levelManager)
     {
-        _finalPanel.InitPanel(loadLevel);
+        _finalPanel.InitPanel(levelManager);
     }
 
     public CoinsCounter CoinsCounter { get { return _coinsCounter; } }

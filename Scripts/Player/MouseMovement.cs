@@ -1,13 +1,21 @@
 using UnityEngine;
 
-public sealed class MouseMovement : Movable
+public sealed class MouseMovement : IMovable
 {
-    [SerializeField] private float _velocity;
-    [SerializeField] private float _xMin;
-    [SerializeField] private float _xMax;
+    private float _velocity;
+    private float _xMin;
+    private float _xMax;
     private Rigidbody _rb;
 
-    public override void InputMovement()
+    public MouseMovement(float velocity, float xMin, float xMax, Rigidbody rb)
+    {
+        _velocity = velocity;
+        _xMin = xMin;
+        _xMax = xMax;
+        _rb = rb;
+    }
+
+    public void InputMovement()
     {
         if (Input.GetMouseButton(1))
             Move(CalculateInput());
@@ -15,7 +23,7 @@ public sealed class MouseMovement : Movable
             Move(Vector3.zero);
     }
 
-    public override void Move(Vector3 movementVector)
+    public void Move(Vector3 movementVector)
     {
         _rb.velocity = movementVector * _velocity;
     }
@@ -38,10 +46,5 @@ public sealed class MouseMovement : Movable
         }
         else
             return Vector3.forward;
-    }
-
-    private void Awake()
-    {
-        _rb = GetComponent<Rigidbody>();
     }
 }

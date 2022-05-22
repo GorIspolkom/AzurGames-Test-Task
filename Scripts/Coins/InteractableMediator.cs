@@ -2,7 +2,6 @@ using UnityEngine;
 
 public sealed class InteractableMediator : MonoBehaviour
 {
-    [SerializeField] private Spawner _effectSpawner;
     private UIHandler _uIHandler;
     private PlayerData _playerData;
 
@@ -16,10 +15,6 @@ public sealed class InteractableMediator : MonoBehaviour
     {
         _playerData.AddCoins(interactable.interactableCoast);
         _uIHandler.CoinsCounter.OnNotify(_playerData.CoinsCount);
-        _effectSpawner.Spawn(interactable.gameObject.transform.position);
-    }
-    private void Start()
-    {
-        _uIHandler.CoinsCounter.OnNotify(_playerData.CoinsCount);
+
     }
 }

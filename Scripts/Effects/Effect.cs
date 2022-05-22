@@ -12,7 +12,7 @@ public class Effect : MonoBehaviour
 
     protected void EffectLifeTime()
     {
-        if (_particlesTime < 0f)
+        if (_particlesTime <= 0f)
             Destroy(gameObject);
         _particlesTime -= Time.deltaTime;
     }

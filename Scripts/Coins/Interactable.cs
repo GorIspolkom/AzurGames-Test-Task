@@ -2,8 +2,8 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
-    protected InteractableMediator interactableMediator;
     [SerializeField] public double interactableCoast;
+    protected InteractableMediator interactableMediator;
 
     public void Init(InteractableMediator interactableMediator)
     {

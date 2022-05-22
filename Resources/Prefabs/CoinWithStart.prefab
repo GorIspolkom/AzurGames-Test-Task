@@ -96,8 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a33e06d5842cc4dae3b75b873ef20b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particleSystem: {fileID: 0}
   interactableCoast: 10
+  _rotationVelocity: 60
 --- !u!135 &899136886300494144
 SphereCollider:
   m_ObjectHideFlags: 0

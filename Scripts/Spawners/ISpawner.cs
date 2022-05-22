@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Spawner : MonoBehaviour
+public interface ISpawner
 {
-    public abstract void Spawn(Vector3 spawnPosition);
+    public void Spawn(Vector3 spawnPosition);
 }

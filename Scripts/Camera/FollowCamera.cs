@@ -4,9 +4,14 @@ using UnityEngine;
 
 public sealed class FollowCamera : MonoBehaviour
 {
-    [SerializeField] private Transform playerTransfrom;
-    [SerializeField] private Vector3 offest;
-    [SerializeField] private float smoothVelocity;
+    [SerializeField] private Vector3 _offest;
+    [SerializeField] private float _smoothVelocity;
+    private Transform _playerTransfrom; 
+
+    public void Init(Transform target)
+    {
+        _playerTransfrom = target;
+    }
 
     private void LateUpdate()
     {
@@ -15,8 +20,8 @@ public sealed class FollowCamera : MonoBehaviour
     
     private void MoveCamera()
     {
-        Vector3 desiredPos = playerTransfrom.position - offest;
-        Vector3 smoothPos = Vector3.Lerp(transform.position, desiredPos, smoothVelocity);
+        Vector3 desiredPos = _playerTransfrom.position - _offest;
+        Vector3 smoothPos = Vector3.Lerp(transform.position, desiredPos, _smoothVelocity);
         transform.position = smoothPos;
     }
 }
