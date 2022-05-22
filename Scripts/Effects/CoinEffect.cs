@@ -1,8 +1,9 @@
 public sealed class CoinEffect : Effect
-{ 
-    private void Start()
+{
+    public override void EffectStart()
     {
-        EffectStart();
+        gameObject.SetActive(true);
+        base.EffectStart();
     }
 
     private void Update()

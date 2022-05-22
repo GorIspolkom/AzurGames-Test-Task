@@ -3236,7 +3236,7 @@ MonoBehaviour:
   - {fileID: 806185209}
   - {fileID: 316585041}
   - {fileID: 1021104102}
-  _interactable: {fileID: 106250875528239727, guid: e3858db3f1a2c99449fc51bc54f89ad9, type: 3}
+  _interactable: {fileID: 6679052723172022065, guid: f45f7c8dca3e45340b451bdfae18484d, type: 3}
 --- !u!1001 &7620025446666806266
 PrefabInstance:
   m_ObjectHideFlags: 0

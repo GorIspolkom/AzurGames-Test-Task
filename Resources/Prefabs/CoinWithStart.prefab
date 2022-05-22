@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 8817309609476102973}
   - component: {fileID: 951118397508698724}
   - component: {fileID: 8652792194407871364}
-  - component: {fileID: 106250875528239727}
-  - component: {fileID: 899136886300494144}
   m_Layer: 0
   m_Name: CoinWithStart
   m_TagString: Untagged
@@ -84,30 +82,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &106250875528239727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6105370238550735990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6a33e06d5842cc4dae3b75b873ef20b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactableCoast: 10
-  _rotationVelocity: 60
---- !u!135 &899136886300494144
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6105370238550735990}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.010000936
-  m_Center: {x: 5.7269406e-12, y: -0.00002925937, z: 0.00006640749}

@@ -15,6 +15,5 @@ public sealed class InteractableMediator : MonoBehaviour
     {
         _playerData.AddCoins(interactable.interactableCoast);
         _uIHandler.CoinsCounter.OnNotify(_playerData.CoinsCount);
-
     }
 }

@@ -7,7 +7,8 @@ public sealed class Coin : Interactable
     public override void Interact()
     {
         interactableMediator.Notify(this);
-        Destroy(gameObject);
+        effect.EffectStart();
+        Destroy(coinModel);
     }
 
     private void Update()
