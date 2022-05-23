@@ -9683,7 +9683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7287856720319908152, guid: e3bf4c0210daf7c4aa4d89422c2ac69b, type: 3}
       propertyPath: _particlesTime
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7287856720319908153, guid: e3bf4c0210daf7c4aa4d89422c2ac69b, type: 3}
       propertyPath: m_Name
@@ -9699,7 +9699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7287856720900477614, guid: e3bf4c0210daf7c4aa4d89422c2ac69b, type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 50
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7287856720900477614, guid: e3bf4c0210daf7c4aa4d89422c2ac69b, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
