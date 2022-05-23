@@ -6,18 +6,20 @@ public sealed class MouseMovement : IMovable
     private float _xMin;
     private float _xMax;
     private Rigidbody _rb;
+    private Animator _animator;
 
-    public MouseMovement(float velocity, float xMin, float xMax, Rigidbody rb)
+    public MouseMovement(float velocity, float xMin, float xMax, Rigidbody rb, Animator animator)
     {
         _velocity = velocity;
         _xMin = xMin;
         _xMax = xMax;
         _rb = rb;
+        _animator = animator;
     }
 
     public void InputMovement()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(0))
             Move(CalculateInput());
         else
             Move(Vector3.zero);
@@ -26,6 +28,7 @@ public sealed class MouseMovement : IMovable
     public void Move(Vector3 movementVector)
     {
         _rb.velocity = movementVector * _velocity;
+        _animator.SetFloat("Velocity", _rb.velocity.magnitude);
     }
 
     private Vector3 CalculateInput()

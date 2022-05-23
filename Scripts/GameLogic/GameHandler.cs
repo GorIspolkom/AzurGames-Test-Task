@@ -22,7 +22,7 @@ public sealed class GameHandler : MonoBehaviour
         _uIHandler.Init(_levelManager);
         _interactableMediator.Init(_playerData, _uIHandler);
         _coinsSpawner = new CoinsSpawner(_spawnPositions, _interactable, _interactableMediator);
-        _player.Init(new MouseMovement(10f, 0.4f, 0.6f, _player.GetComponent<Rigidbody>()));
+        _player.Init(new MouseMovement(10f, 0.4f, 0.6f, _player.GetComponent<Rigidbody>(), _player.GetComponent<Animator>()));
         _followCamera.Init(_player.transform);
         _coinsSpawner.SpawnInteractables();
         _uIHandler.CoinsCounter.OnNotify(_playerData.CoinsCount);
