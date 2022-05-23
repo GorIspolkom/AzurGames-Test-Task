@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 public sealed class CoinsSpawner : ISpawner
 {
@@ -6,14 +7,17 @@ public sealed class CoinsSpawner : ISpawner
     private Interactable _interactable;
     private InteractableMediator _mediator;
 
+    [Inject]
     public CoinsSpawner(Transform[] spawnPositions, Interactable interactable, InteractableMediator mediator)
     {
         _spawnPoints = spawnPositions;
         _interactable = interactable;
         _mediator = mediator;
+
+        SpawnInteractables();
     }
 
-    public void SpawnInteractables()
+    private void SpawnInteractables()
     {
         foreach (Transform point in _spawnPoints)
             Spawn(point.position);
@@ -21,7 +25,7 @@ public sealed class CoinsSpawner : ISpawner
 
     public void Spawn(Vector3 spawnPosition)
     {
-        Interactable ine = Object.Instantiate(_interactable, spawnPosition, Quaternion.identity, null);
-        ine.Init(_mediator);
+        Interactable interactable = Object.Instantiate(_interactable, spawnPosition, Quaternion.identity, null);
+        interactable.Init(_mediator);
     }
 }

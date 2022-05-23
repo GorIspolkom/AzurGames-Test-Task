@@ -1,13 +1,15 @@
 using UnityEngine;
+using Zenject;
 
 public sealed class UIHandler : MonoBehaviour
 {
     [SerializeField] private CoinsCounter _coinsCounter;
     [SerializeField] private FinalPanel _finalPanel;
 
-    public void Init(LevelManager levelManager)
+    [Inject]
+    public void Init(LevelLoader levelLoader)
     {
-        _finalPanel.InitPanel(levelManager);
+        _finalPanel.InitPanel(levelLoader);
     }
 
     public CoinsCounter CoinsCounter { get { return _coinsCounter; } }

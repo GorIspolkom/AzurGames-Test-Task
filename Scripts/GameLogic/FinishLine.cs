@@ -6,9 +6,7 @@ public sealed class FinishLine : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag.Equals("Player"))
-        {
+        if (other.tag.Equals(Settings.PlayerTag))
             _uIHandler.FinalPanel.Open();
-        }
     }
 }

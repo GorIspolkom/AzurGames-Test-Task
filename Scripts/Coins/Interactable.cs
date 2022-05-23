@@ -2,11 +2,13 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
-    [SerializeField] public double interactableCoast;
+    [SerializeField] protected double interactableCoast;
     [SerializeField] protected GameObject coinModel;
     [SerializeField] protected Effect effect;
 
     protected InteractableMediator interactableMediator;
+
+    public double InteractableCoast { get { return interactableCoast; } }
 
     public void Init(InteractableMediator interactableMediator)
     {
@@ -16,7 +18,7 @@ public abstract class Interactable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag.Equals("Player"))
+        if (other.tag.Equals(Settings.PlayerTag))
             Interact();
     }
 

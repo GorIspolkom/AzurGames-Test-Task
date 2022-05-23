@@ -1,16 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public sealed class FollowCamera : MonoBehaviour
-{
-    [SerializeField] private Vector3 _offest;
-    [SerializeField] private float _smoothVelocity;
-    private Transform _playerTransfrom; 
-
-    public void Init(Transform target)
+{ 
+    private Transform _playerTransfrom;
+    private Vector3 _offest;
+    private float _smoothVelocity;
+   
+    [Inject]
+    public void Init(Transform target, Vector3 offset, float smoothVelocity)
     {
         _playerTransfrom = target;
+        _offest = offset;
+        _smoothVelocity = smoothVelocity;
     }
 
     private void LateUpdate()

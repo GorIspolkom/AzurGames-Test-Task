@@ -1,6 +1,6 @@
 using UnityEngine.SceneManagement;
 
-public sealed class LevelManager
+public sealed class LevelLoader
 {
     public void OpenNextLevel()
     {

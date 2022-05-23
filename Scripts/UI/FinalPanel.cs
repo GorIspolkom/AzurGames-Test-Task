@@ -3,12 +3,12 @@ using UnityEngine;
 
 public sealed class FinalPanel : InterfacePanel
 {
-    private LevelManager _levelManager;
+    private LevelLoader _levelLoader;
     [SerializeField] private float _animationVelocity;
 
-    public void InitPanel(LevelManager levelManager) 
+    public void InitPanel(LevelLoader levelLoader) 
     {
-        _levelManager = levelManager;
+        _levelLoader = levelLoader;
         DOTween.Init();
     }
 
@@ -20,6 +20,6 @@ public sealed class FinalPanel : InterfacePanel
 
     public void OpenNextLevel()
     {
-        _levelManager.OpenNextLevel();
+        _levelLoader.OpenNextLevel();
     }
 }
