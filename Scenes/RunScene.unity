@@ -1570,8 +1570,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _velocity: 10
-  _xMin: 0.45
-  _xMax: 0.55
+  _xMin: 0.4
+  _xMax: 0.6
   _rb: {fileID: 1942503210}
   _animator: {fileID: 1942503213}
 --- !u!1 &1026959035
@@ -3523,11 +3523,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4596650356689809660, guid: 513e37334c111e448a4cf8d9d8063583, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00098
+      value: 0.00291
       objectReference: {fileID: 0}
     - target: {fileID: 4596650356689809660, guid: 513e37334c111e448a4cf8d9d8063583, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.00028
+      value: -0.00122
       objectReference: {fileID: 0}
     - target: {fileID: 7769358137123026155, guid: 513e37334c111e448a4cf8d9d8063583, type: 3}
       propertyPath: m_LocalPosition.x

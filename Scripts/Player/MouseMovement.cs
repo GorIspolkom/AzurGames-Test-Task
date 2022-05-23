@@ -49,5 +49,6 @@ public sealed class MouseMovement : IMovable
         }
         else
             return Vector3.forward;
+
     }
 }
