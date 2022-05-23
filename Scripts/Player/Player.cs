@@ -11,7 +11,7 @@ public sealed class Player : MonoBehaviour
         _movable = movable;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         _movable.InputMovement();
     }
