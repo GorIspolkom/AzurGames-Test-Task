@@ -1,4 +1,4 @@
-# AzureGames-Test-Task
+# AzurGames-Test-Task
 
 Версия Unity: 2021.1.20
 
