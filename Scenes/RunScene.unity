@@ -522,6 +522,17 @@ Transform:
   m_Father: {fileID: 918800706}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &380388571 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2386833491250917032, guid: 513e37334c111e448a4cf8d9d8063583, type: 3}
+  m_PrefabInstance: {fileID: 2386833492656525700}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb2efdcf15d79147939d6cc8b6a374b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &388140800
 GameObject:
   m_ObjectHideFlags: 0
@@ -3129,6 +3140,7 @@ GameObject:
   - component: {fileID: 2138204389}
   - component: {fileID: 2138204390}
   - component: {fileID: 2138204391}
+  - component: {fileID: 2138204388}
   m_Layer: 0
   m_Name: GameLogic
   m_TagString: Untagged
@@ -3136,6 +3148,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2138204388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138204387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1075f8c46207e97498fa168317f0548f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 380388571}
 --- !u!4 &2138204389
 Transform:
   m_ObjectHideFlags: 0
@@ -3440,6 +3465,14 @@ PrefabInstance:
     - target: {fileID: 2225352530922022610, guid: 513e37334c111e448a4cf8d9d8063583, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -60.659
+      objectReference: {fileID: 0}
+    - target: {fileID: 2386833491250917038, guid: 513e37334c111e448a4cf8d9d8063583, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2386833491250917038, guid: 513e37334c111e448a4cf8d9d8063583, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2780133942036400353, guid: 513e37334c111e448a4cf8d9d8063583, type: 3}
       propertyPath: m_RootOrder

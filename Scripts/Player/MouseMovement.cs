@@ -17,12 +17,12 @@ public sealed class MouseMovement : IMovable
         _animator = animator;
     }
 
-    public void InputMovement()
+    public void InputMovement(Vector3 movementVector)
     {
-        if (Input.GetMouseButton(0))
-            Move(CalculateInput());
+        if (movementVector != Vector3.zero)
+            Move(CalculateInput(movementVector));
         else
-            Move(Vector3.zero);
+            Move(movementVector);
     }
 
     public void Move(Vector3 movementVector)
@@ -31,12 +31,12 @@ public sealed class MouseMovement : IMovable
         _animator.SetFloat("Velocity", _rb.velocity.magnitude);
     }
 
-    private Vector3 CalculateInput()
+    private Vector3 CalculateInput(Vector3 mousePos)
     {
         float xMousePos = 0f;
 
         Vector3 mousePosition = Camera.main.
-            ScreenToViewportPoint(Input.mousePosition);
+            ScreenToViewportPoint(mousePos);
 
         if (mousePosition.x <= _xMin || mousePosition.x >= _xMax)
         {
