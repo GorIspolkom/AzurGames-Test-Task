@@ -1,20 +1,30 @@
 using UnityEngine;
 
+public struct MouseMovementData
+{
+    public float velocity;
+    public float xMin;
+    public float xMax;
+    public Rigidbody rb;
+    public Animator animator;
+
+    public MouseMovementData(float velocity, float xMin, float xMax, Rigidbody rb, Animator animator)
+    {
+        this.velocity = velocity;
+        this.xMin = xMin;
+        this.xMax = xMax;
+        this.rb = rb;
+        this.animator = animator;
+    }
+}
+
 public sealed class MouseMovement : IMovable
 {
-    private float _velocity;
-    private float _xMin;
-    private float _xMax;
-    private Rigidbody _rb;
-    private Animator _animator;
+    private readonly MouseMovementData _mouseMovementData;
 
-    public MouseMovement(float velocity, float xMin, float xMax, Rigidbody rb, Animator animator)
+    public MouseMovement(MouseMovementData mouseMovementData)
     {
-        _velocity = velocity;
-        _xMin = xMin;
-        _xMax = xMax;
-        _rb = rb;
-        _animator = animator;
+        _mouseMovementData = mouseMovementData;
     }
 
     public void InputMovement(Vector3 movementVector)
@@ -27,8 +37,8 @@ public sealed class MouseMovement : IMovable
 
     public void Move(Vector3 movementVector)
     {
-        _rb.velocity = movementVector * _velocity;
-        _animator.SetFloat("Velocity", _rb.velocity.magnitude);
+        _mouseMovementData.rb.velocity = movementVector * _mouseMovementData.velocity;
+        _mouseMovementData.animator.SetFloat("Velocity", _mouseMovementData.rb.velocity.magnitude);
     }
 
     private Vector3 CalculateInput(Vector3 mousePos)
@@ -38,7 +48,7 @@ public sealed class MouseMovement : IMovable
         Vector3 mousePosition = Camera.main.
             ScreenToViewportPoint(mousePos);
 
-        if (mousePosition.x <= _xMin || mousePosition.x >= _xMax)
+        if (mousePosition.x <= _mouseMovementData.xMin || mousePosition.x >= _mouseMovementData.xMax)
         {
             xMousePos = mousePosition.x;
 

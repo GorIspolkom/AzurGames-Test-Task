@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class CameraInstaller : MonoInstaller
+public sealed class CameraInstaller : MonoInstaller
 {
     [SerializeField] private Transform _targetTransform;
     [SerializeField] private Vector3 _offset;
@@ -9,9 +9,9 @@ public class CameraInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        Container.Bind<Transform>().FromInstance(_targetTransform);
-        Container.Bind<Vector3>().FromInstance(_offset);
-        Container.Bind<float>().FromInstance(_smoothVelocity);
+        FollowCameraData followCameraData = new FollowCameraData(_targetTransform, _offset, _smoothVelocity);
+
+        Container.Bind<FollowCameraData>().FromInstance(followCameraData);
 
         Container.Bind<FollowCamera>().AsSingle();
     }

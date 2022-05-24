@@ -9,7 +9,8 @@ public sealed class SpawnerInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
+        CoinsSpawnerData coinsSpawnerData = new CoinsSpawnerData(_spawnPoints, _interactable, _mediator);
         Container.Bind<ISpawner>().To<CoinsSpawner>().FromNew()
-           .AsSingle().WithArguments(_spawnPoints, _interactable, _mediator).NonLazy();
+           .AsSingle().WithArguments(coinsSpawnerData).NonLazy();
     }
 }

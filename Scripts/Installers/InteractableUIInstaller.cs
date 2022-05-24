@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class InteractableUIInstaller : MonoInstaller
+public sealed class InteractableUIInstaller : MonoInstaller
 {
     [SerializeField] private UIHandler _uIHandler;
     private LevelLoader _levelLoader;

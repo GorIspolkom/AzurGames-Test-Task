@@ -11,7 +11,9 @@ public sealed class PlayerMovementInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
+        MouseMovementData mouseMovementData = new MouseMovementData(_velocity, _xMin, _xMax, _rb, _animator);
+
         Container.Bind<IMovable>().To<MouseMovement>().FromNew()
-            .AsSingle().WithArguments(_velocity, _xMin, _xMax, _rb, _animator);
+            .AsSingle().WithArguments(mouseMovementData);
     }
 }
