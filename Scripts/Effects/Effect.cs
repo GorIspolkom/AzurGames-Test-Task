@@ -23,7 +23,7 @@ public class Effect : MonoBehaviour
     protected void EffectLifeTime()
     {
         if (_particlesTime <= 0f)
-            _effectPool.Notify(this);
+            _effectPool.EffectEnd?.Invoke(this);
         _particlesTime -= Time.deltaTime;
     }
 }

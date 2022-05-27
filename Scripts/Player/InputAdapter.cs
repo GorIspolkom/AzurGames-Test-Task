@@ -1,10 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
+using System;
 
 public class InputAdapter : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    private MouseAdapter _mouseAdapter;
+
+    [Inject]
+    public void Init(MouseMovementData mouseMovementData, Action<Vector3> moveAction)
+    {
+        _mouseAdapter = new MouseAdapter(mouseMovementData, moveAction);
+    }
 
     private void Update()
     {
@@ -14,8 +20,7 @@ public class InputAdapter : MonoBehaviour
     private void ControllInput()
     {
         if (Input.GetMouseButton(0))
-            _player.Movable.InputMovement(Input.mousePosition);
-        else
-            _player.Movable.InputMovement(Vector3.zero);
+           _mouseAdapter.ProcessMovement(Input.mousePosition);
     }
 }
+

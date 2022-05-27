@@ -1,9 +1,23 @@
 using UnityEngine;
+using System;
 
 public sealed class EffectPool
 {
-    public void Notify(Effect effect)
+    public Action<Effect> EffectEnd;
+
+    public EffectPool()
     {
-        Object.Destroy(effect.RootObject);   
+        EffectEnd += Notify;
+        EffectEnd += InfoData;
+    }
+
+    private void Notify(Effect effect)
+    {
+        UnityEngine.Object.Destroy(effect.RootObject);   
+    }
+
+    private void InfoData(Effect effect)
+    {
+        Debug.Log("Effect" + effect.name + "end");
     }
 }
