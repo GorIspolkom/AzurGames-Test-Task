@@ -1,9 +1,9 @@
 using UnityEngine;
 using Zenject;
 
-public sealed class InteractableUIInstaller : MonoInstaller
+public sealed class CollectableUIInstaller : MonoInstaller
 {
-    [SerializeField] private UIHandler _uIHandler;
+    [SerializeField] private UIPool _uIPool;
     private LevelLoader _levelLoader;
     private PlayerData _playerData;
 
@@ -14,13 +14,8 @@ public sealed class InteractableUIInstaller : MonoInstaller
 
         Container.Bind<LevelLoader>().FromInstance(_levelLoader);
         Container.Bind<PlayerData>().FromInstance(_playerData);
-        Container.Bind<UIHandler>().FromComponentOn(_uIHandler.gameObject).AsSingle();
+        Container.Bind<UIPool>().FromComponentOn(_uIPool.gameObject).AsSingle();
 
-        Container.Bind<InteractableMediator>().AsSingle();
-    }
-
-    private void Awake()
-    {
-        _uIHandler.CoinsCounter.OnNotify(_playerData.CoinsCount);
+        Container.Bind<CollectableMediator>().AsSingle();
     }
 }

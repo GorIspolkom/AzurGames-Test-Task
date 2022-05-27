@@ -5,15 +5,23 @@ public struct MouseMovementData
     public float velocity;
     public float xMin;
     public float xMax;
-    public Rigidbody rb;
-    public Animator animator;
 
-    public MouseMovementData(float velocity, float xMin, float xMax, Rigidbody rb, Animator animator)
+    public MouseMovementData(float velocity, float xMin, float xMax)
     {
         this.velocity = velocity;
         this.xMin = xMin;
         this.xMax = xMax;
-        this.rb = rb;
+    }
+}
+
+public struct PlayerMovementComponents
+{
+    public CharacterController characterController;
+    public Animator animator;
+
+    public PlayerMovementComponents(CharacterController characterController, Animator animator)
+    {
+        this.characterController = characterController;
         this.animator = animator;
     }
 }
@@ -21,24 +29,27 @@ public struct MouseMovementData
 public sealed class MouseMovement : IMovable
 {
     private readonly MouseMovementData _mouseMovementData;
+    private readonly PlayerMovementComponents _playerMovementComponents;
 
-    public MouseMovement(MouseMovementData mouseMovementData)
+    public MouseMovement(MouseMovementData mouseMovementData, PlayerMovementComponents playerMovementComponents)
     {
         _mouseMovementData = mouseMovementData;
+        _playerMovementComponents = playerMovementComponents;
     }
 
     public void InputMovement(Vector3 movementVector)
     {
-        if (movementVector != Vector3.zero)
-            Move(CalculateInput(movementVector));
-        else
+        if (movementVector.Equals(Vector3.zero))
             Move(movementVector);
+        else
+            Move(CalculateInput(movementVector));
     }
 
-    public void Move(Vector3 movementVector)
+    private void Move(Vector3 movementVector)
     {
-        _mouseMovementData.rb.velocity = movementVector * _mouseMovementData.velocity;
-        _mouseMovementData.animator.SetFloat("Velocity", _mouseMovementData.rb.velocity.magnitude);
+        Debug.Log((movementVector * _mouseMovementData.velocity).magnitude);
+        _playerMovementComponents.characterController.Move(movementVector * _mouseMovementData.velocity);
+        _playerMovementComponents.animator.SetFloat("Velocity", (movementVector * _mouseMovementData.velocity).magnitude);
     }
 
     private Vector3 CalculateInput(Vector3 mousePos)
@@ -55,10 +66,10 @@ public sealed class MouseMovement : IMovable
             if (mousePosition.x < 0.5)
                 xMousePos = -(1 - mousePosition.x);
 
-            return new Vector3(xMousePos, 0f, 1f);
+            return (new Vector3(0f, 0f, Vector3.forward.z - 0.4f) + new Vector3(xMousePos, 0f, 0f)).normalized;
         }
         else
-            return Vector3.forward;
+            return Vector3.forward.normalized;
 
     }
 }

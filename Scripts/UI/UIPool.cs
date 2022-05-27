@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public sealed class UIHandler : MonoBehaviour
+public sealed class UIPool : MonoBehaviour
 {
     [SerializeField] private CoinsCounter _coinsCounter;
     [SerializeField] private FinalPanel _finalPanel;

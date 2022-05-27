@@ -2,11 +2,11 @@ using UnityEngine;
 
 public sealed class FinishLine : MonoBehaviour
 {
-    [SerializeField] private UIHandler _uIHandler;
+    [SerializeField] private UIPool _uIPool;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag.Equals(Settings.PlayerTag))
-            _uIHandler.FinalPanel.Open();
+        if (other.TryGetComponent<Player>(out Player player))
+            _uIPool.FinalPanel.Open();
     }
 }

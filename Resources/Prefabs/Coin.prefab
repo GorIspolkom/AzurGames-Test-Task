@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a33e06d5842cc4dae3b75b873ef20b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableCoast: 5
+  collectableCoast: 5
   coinModel: {fileID: 5704839157603828139}
   effect: {fileID: 850791193150788588}
   _rotationVelocity: 60

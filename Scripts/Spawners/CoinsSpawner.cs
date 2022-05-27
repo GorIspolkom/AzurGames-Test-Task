@@ -4,13 +4,13 @@ using Zenject;
 public struct CoinsSpawnerData
 {
     public Transform[] spawnPoints;
-    public Interactable interactable;
-    public InteractableMediator mediator;
+    public Collectable collectable;
+    public CollectableMediator mediator;
 
-    public CoinsSpawnerData(Transform[] spawnPoints, Interactable interactable, InteractableMediator mediator)
+    public CoinsSpawnerData(Transform[] spawnPoints, Collectable collectable, CollectableMediator mediator)
     {
         this.spawnPoints = spawnPoints;
-        this.interactable = interactable;
+        this.collectable = collectable;
         this.mediator = mediator;
     }
 }
@@ -18,15 +18,17 @@ public struct CoinsSpawnerData
 public sealed class CoinsSpawner : ISpawner
 {
     private readonly CoinsSpawnerData _coinsSpawnerData;
+    private readonly EffectPool _effectPool;
 
     [Inject]
-    public CoinsSpawner(CoinsSpawnerData coinsSpawnerData)
+    public CoinsSpawner(CoinsSpawnerData coinsSpawnerData, EffectPool effectPool)
     {
         _coinsSpawnerData = coinsSpawnerData;
-        SpawnInteractables();
+        _effectPool = effectPool;
+        SpawnCollectable();
     }
 
-    private void SpawnInteractables()
+    private void SpawnCollectable()
     {
         foreach (Transform point in _coinsSpawnerData.spawnPoints)
             Spawn(point.position);
@@ -34,7 +36,7 @@ public sealed class CoinsSpawner : ISpawner
 
     public void Spawn(Vector3 spawnPosition)
     {
-        Interactable interactable = Object.Instantiate(_coinsSpawnerData.interactable, spawnPosition, Quaternion.identity, null);
-        interactable.Init(_coinsSpawnerData.mediator);
+        Collectable collectable = Object.Instantiate(_coinsSpawnerData.collectable, spawnPosition, Quaternion.identity, null);
+        collectable.Init(_coinsSpawnerData.mediator, _effectPool);
     }
 }

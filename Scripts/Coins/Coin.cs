@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public sealed class Coin : Interactable
+public sealed class Coin : Collectable
 {
     [SerializeField] private float _rotationVelocity;
 
     public override void Interact()
     {
-        interactableMediator.Notify(this);
+        collectableMediator.Notify(this);
         effect.EffectStart();
         Destroy(coinModel);
     }
