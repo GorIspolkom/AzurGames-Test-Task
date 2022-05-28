@@ -232,6 +232,7 @@ MonoBehaviour:
   - {fileID: 326476854}
   _collectable: {fileID: 6679052723172022065, guid: f45f7c8dca3e45340b451bdfae18484d, type: 3}
   _mediator: {fileID: 2138204391}
+  _targetTransform: {fileID: 543450652795869541}
 --- !u!1 &228638420
 GameObject:
   m_ObjectHideFlags: 0
@@ -3402,6 +3403,10 @@ PrefabInstance:
       propertyPath: _uIHandler
       value: 
       objectReference: {fileID: 2138204390}
+    - target: {fileID: 4448583380844572486, guid: 0e26efc52947d7842813dae385ee53f8, type: 3}
+      propertyPath: _targetTransfrom
+      value: 
+      objectReference: {fileID: 543450652795869541}
     - target: {fileID: 4514260050340827739, guid: 0e26efc52947d7842813dae385ee53f8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647

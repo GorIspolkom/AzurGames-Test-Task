@@ -10,17 +10,21 @@ public abstract class Collectable : MonoBehaviour
 
     public double CollectableCoast { get { return collectableCoast; } }
 
-    public void Init(CollectableMediator collectableMediator, EffectPool effectPool)
+    private Transform _targetTransform;
+
+    public void Init(CollectableMediator collectableMediator, EffectPool effectPool, Transform targetTransform)
     {
+        _targetTransform = targetTransform;
         this.collectableMediator = collectableMediator;
+       
         effect.Init(gameObject, effectPool);
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.TryGetComponent<Player>(out Player player))
-    //        Interact();
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.Equals(_targetTransform))
+            Interact();
+    }
 
     public abstract void Interact();
 }

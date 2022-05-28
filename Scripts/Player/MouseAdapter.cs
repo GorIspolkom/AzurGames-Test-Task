@@ -38,7 +38,7 @@ public sealed class MouseAdapter
                 if (mousePosition.x < 0.5)
                     xMousePos = -(1 - mousePosition.x);
 
-                return (new Vector3(0f, 0f, Vector3.forward.z - 0.2f) +
+                return (new Vector3(0f, 0f, Vector3.forward.z) +
                    new Vector3(xMousePos, 0f, 0f)) * _mouseMovementData.velocity;
             }
             else
