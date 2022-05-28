@@ -1,18 +1,11 @@
-using UnityEngine;
-using Zenject;
-using System;
-
-public sealed class Player : MonoBehaviour
+public sealed class Player
 {
-    public Action<Vector3> PlayerAction;
-
     private IMovable _movable;
 
-    [Inject]
-    public void Init(IMovable movable)
+    public IMovable Movable { get { return _movable; } }
+
+    public Player(IMovable movable)
     {
         _movable = movable;
-        PlayerAction = _movable.InputMovement;
-        Debug.Log(PlayerAction.Method);
     }
 }

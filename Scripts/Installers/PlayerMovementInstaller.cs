@@ -1,6 +1,5 @@
 using UnityEngine;
 using Zenject;
-using System;
 
 public sealed class PlayerMovementInstaller : MonoInstaller
 {
@@ -8,7 +7,6 @@ public sealed class PlayerMovementInstaller : MonoInstaller
     [SerializeField] private float _xMin;
     [SerializeField] private float _xMax;
 
-    [SerializeField] private Player _player;
     [SerializeField] private CharacterController _characterController;
     [SerializeField] private Animator _animator;
 
@@ -19,15 +17,18 @@ public sealed class PlayerMovementInstaller : MonoInstaller
         PlayerMovementComponents playerMovementComponents = new 
             PlayerMovementComponents(_characterController, _animator);
 
-        Container.Bind<MouseMovementData>().FromInstance(mouseMovementData);
+        MouseMovement mouseMovement = new MouseMovement(playerMovementComponents);
 
-        Container.Bind<IMovable>().To<MouseMovement>().FromNew()
-            .AsSingle().WithArguments(playerMovementComponents);
+        Player player = new Player(mouseMovement);
 
-        Container.Bind<Action<Vector3>>().FromInstance(_player.PlayerAction);
+        InputAdapter inputAdapter = new InputAdapter();
 
-        //Debug.Log(_player.PlayerAction.Method);
+        MouseAdapter mouseAdapter = new MouseAdapter(mouseMovementData);
 
-        Container.Bind<InputAdapter>().AsSingle();
+        MovementKeeperComponents movementKeeperComponents = new MovementKeeperComponents(player, mouseAdapter, inputAdapter);
+
+        Container.Bind<MovementKeeperComponents>().FromInstance(movementKeeperComponents);
+
+        Container.Bind<MovementKeeper>().AsSingle();
     }
 }

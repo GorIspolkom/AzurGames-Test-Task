@@ -1,4 +1,4 @@
-public class PlayerData
+public sealed class PlayerData
 {
     public double CoinsCount { get; private set; }
 

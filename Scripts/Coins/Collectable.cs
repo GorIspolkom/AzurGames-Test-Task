@@ -16,11 +16,11 @@ public abstract class Collectable : MonoBehaviour
         effect.Init(gameObject, effectPool);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent<Player>(out Player player))
-            Interact();
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.TryGetComponent<Player>(out Player player))
+    //        Interact();
+    //}
 
     public abstract void Interact();
 }

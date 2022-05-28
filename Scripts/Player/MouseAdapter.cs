@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 
 public struct MouseMovementData
 {
@@ -15,34 +14,37 @@ public struct MouseMovementData
     }
 }
 
-public class MouseAdapter
+public sealed class MouseAdapter
 {
     private readonly MouseMovementData _mouseMovementData;
-    private readonly Action<Vector3> _moveAction;
 
-    public MouseAdapter(MouseMovementData mouseMovementData, Action<Vector3> moveAction)
+    public MouseAdapter(MouseMovementData mouseMovementData)
     {
         _mouseMovementData = mouseMovementData;
-        _moveAction = moveAction;
     }
 
-    public void ProcessMovement(Vector3 mousePosition)
+    public Vector3 ProcessMovement(Vector3 mousePosition)
     {
-        float xMousePos = 0f;
-
-        mousePosition = Camera.main.ScreenToViewportPoint(mousePosition);
-
-        if (mousePosition.x <= _mouseMovementData.xMin || mousePosition.x >= _mouseMovementData.xMax)
+        if (!mousePosition.Equals(Vector3.zero))
         {
-            xMousePos = mousePosition.x;
+            float xMousePos = 0f;
 
-            if (mousePosition.x < 0.5)
-                xMousePos = -(1 - mousePosition.x);
+            mousePosition = Camera.main.ScreenToViewportPoint(mousePosition);
 
-            _moveAction?.Invoke(new Vector3(0f, 0f, Vector3.forward.z - 0.4f) + 
-                new Vector3(xMousePos, 0f, 0f) * _mouseMovementData.velocity);
+            if (mousePosition.x <= _mouseMovementData.xMin || mousePosition.x >= _mouseMovementData.xMax)
+            {
+                xMousePos = mousePosition.x;
+
+                if (mousePosition.x < 0.5)
+                    xMousePos = -(1 - mousePosition.x);
+
+                return (new Vector3(0f, 0f, Vector3.forward.z - 0.2f) +
+                   new Vector3(xMousePos, 0f, 0f)) * _mouseMovementData.velocity;
+            }
+            else
+                return Vector3.forward * _mouseMovementData.velocity;
         }
-        else
-            _moveAction?.Invoke(Vector3.forward * _mouseMovementData.velocity);
+        return Vector3.zero;
+        
     }
 }
