@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public struct MouseMovementData
 {
@@ -23,26 +24,24 @@ public sealed class MouseAdapter
         _mouseMovementData = mouseMovementData;
     }
 
-    public Vector3 ProcessMovement(Vector3 mousePosition)
+    public Vector3 ProcessMovement(Tuple<Vector3, InputDirection> movementTuple)
     {
-        if (!mousePosition.Equals(Vector3.zero))
+
+        if (!movementTuple.Item1.Equals(Vector3.zero))
         {
-            float xMousePos = 0f;
-
-            mousePosition = Camera.main.ScreenToViewportPoint(mousePosition);
-
-            if (mousePosition.x <= _mouseMovementData.xMin || mousePosition.x >= _mouseMovementData.xMax)
+            if(movementTuple.Item2 == InputDirection.Yaw)
             {
-                xMousePos = mousePosition.x;
+                Vector3 mousePosition = Camera.main.ScreenToViewportPoint(movementTuple.Item1);
 
-                if (mousePosition.x < 0.5)
-                    xMousePos = -(1 - mousePosition.x);
+                float xMousePosition = mousePosition.x;
 
-                return (new Vector3(0f, 0f, Vector3.forward.z) +
-                   new Vector3(xMousePos, 0f, 0f)) * _mouseMovementData.velocity;
+                if (mousePosition.x < 0.5f)
+                    xMousePosition = -(1 - mousePosition.x);
+
+                return new Vector3(xMousePosition, 0f, 0f) * _mouseMovementData.velocity;
+
             }
-            else
-                return Vector3.forward * _mouseMovementData.velocity;
+            return Vector3.forward * _mouseMovementData.velocity;
         }
         return Vector3.zero;
         

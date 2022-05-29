@@ -1,5 +1,6 @@
 using UnityEngine;
 using Zenject;
+using System;
 
 public struct MovementKeeperComponents
 {
@@ -32,7 +33,7 @@ public sealed class MovementKeeper : MonoBehaviour
 
     private void MotionProcessing()
     {
-        Vector3 inputData = _movementKeeperComponents.inputAdapter.ControllInput();
+        Tuple<Vector3, InputDirection> inputData = _movementKeeperComponents.inputAdapter.ControllInput();
         Vector3 processedData = _movementKeeperComponents.mouseAdapter.ProcessMovement(inputData);
         _movementKeeperComponents.player.Movable.InputMovement(processedData);
     }

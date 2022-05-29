@@ -1570,7 +1570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a7e00f22e73264db5eb31119fbf14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _velocity: 0.025
+  _velocity: 0.25
   _xMin: 0.4
   _xMax: 0.6
   _characterController: {fileID: 1917743369}
